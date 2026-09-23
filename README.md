@@ -1,16 +1,15 @@
-#Deflating Economic Data — Nominal vs. Real
-Objective
+# Deflating Economic Data — Nominal vs. Real
 
-This project quantifies the divergence between nominal and inflation-adjusted (real) economic indicators by constructing a CPI-based deflation pipeline and applying it to U.S. wage and consumer price data.
+## Objective
+This project quantifies the divergence between nominal and inflation-adjusted (real) economic indicators by constructing a CPI-based deflation pipeline and applying it to U.S. wage and price data.
 
-Methodology
-Retrieved historical Consumer Price Index (CPI) and Average Hourly Earnings series directly from the Federal Reserve Economic Data (FRED) API using unauthenticated public endpoints
-Designed and implemented a reusable deflate_series() function to convert nominal time series into constant (real) dollar terms using a selectable base year
-Rebased all series to constant 2020 dollars to enable consistent, apples-to-apples comparison across the full sample period
-Applied the deflation methodology to two independent series — average hourly earnings and the U.S. Big Mac price — to validate the approach across different data types
-Calculated nominal, real, and CPI growth rates over the full date range to isolate the inflation component of each series' change
-Developed an interactive deflation explorer featuring a base-year slider, allowing dynamic re-basing and real-time recalculation of real values
-Key Findings
-Wages: Nominal average hourly earnings rose from $2.50 to $32.53 over the sample period — a substantial nominal gain. However, once adjusted for inflation, real earnings grew far more modestly, from $20.92 to $25.20, revealing that a large share of the nominal wage increase reflects inflation rather than genuine purchasing power growth.
-Big Mac Price: The nominal U.S. Big Mac price increased 178% over the same period, while CPI rose 95%. After deflating, the real price increase was 43% — indicating that Big Mac prices outpaced general inflation, representing genuine real price appreciation beyond the economy-wide cost-of-living increase.
-Broader Insight: Across both series, the analysis demonstrates that nominal figures alone can substantially overstate real economic gains, underscoring the importance of CPI-adjustment when evaluating long-run trends in wages and prices.
+## Methodology
+- Retrieved Consumer Price Index (CPI) and Average Hourly Earnings series directly from the FRED API without requiring an API key
+- Developed a reusable `deflate_series()` function to convert nominal time series into constant-dollar (real) terms using a selectable base year
+- Applied the deflation methodology to two series: average hourly earnings and the U.S. Big Mac price, both rebased to constant 2020 dollars
+- Built an interactive deflation explorer allowing users to adjust the base year via a slider and observe the resulting shift in real values in real time
+
+## Key Findings
+- **Wages:** Nominal average hourly earnings rose from $2.50 to $32.53 over the sample period, an increase that overstates actual purchasing power gains. In constant 2020 dollars, real earnings rose more modestly from $20.92 to $25.20.
+- **Big Mac Price:** The nominal price of a U.S. Big Mac increased by 178% over the same period. After adjusting for inflation (CPI +95%), the real increase was only 43% — indicating that a substantial share of the nominal price growth reflects broad-based inflation rather than a rise in the Big Mac's real cost.
+- **Broader Implication:** The comparison across both series illustrates how nominal figures can significantly overstate real economic change, reinforcing the importance of CPI deflation when interpreting long-run price and wage trends.
